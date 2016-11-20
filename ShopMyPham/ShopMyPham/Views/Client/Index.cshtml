@@ -1,0 +1,62 @@
+﻿@model ShopMyPham.Models.QuanTriModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="/Content/Login_theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/Login_theme/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/Content/Login_theme/css/price-range.css" rel="stylesheet">
+    <link href="/Content/Login_theme/css/animate.css" rel="stylesheet">*@
+   @* <link href="/Content/Login_theme/css/main.css" rel="stylesheet">*@
+   <link href="/Content/Login_theme/css/responsive.css" rel="stylesheet">
+<!--form-->
+<br /><br /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="login-form">
+                <!--login form-->
+                <h2>Login to your account</h2>
+                @using (Html.BeginForm("Login", "Client", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, null)
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Username, new { @placeholder = "Name" })
+                        @Html.TextBoxFor(x => x.Password, new { @placeholder = "Password" })
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </fieldset>
+                }
+            </div><!--/login form-->
+        </div>
+        <div class="col-sm-1">
+            <h2 class="or">OR</h2>
+        </div>
+        <div class="col-sm-4">
+            <div class="signup-form">
+                <!--sign up form-->
+                <h2>New User Signup!</h2>
+                @using (Html.BeginForm("Register", "Client", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, null)
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Username, new { @placeholder = "Name" })
+                        @Html.TextBoxFor(x => x.Password, new { @placeholder = "Password" })
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email Address" })
+                        <button type="submit" class="btn btn-default">Signup</button>
+                    </fieldset>
+                }
+            </div><!--/sign up form-->
+        </div>
+    </div>
+</div>
+<br /><br /><br />
+
+@*<script src="/Content/Login_theme/js/jquery.js"></script>
+<script src="/Content/Login_theme/js/price-range.js"></script>
+<script src="/Content/Login_theme/js/jquery.scrollUp.min.js"></script>
+<script src="/Content/Login_theme/js/bootstrap.min.js"></script>
+<script src="/Content/Login_theme/js/jquery.prettyPhoto.js"></script>
+<script src="/Content/Login_theme/js/main.js"></script>*@
+
