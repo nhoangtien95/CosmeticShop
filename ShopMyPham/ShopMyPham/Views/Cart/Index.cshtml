@@ -45,14 +45,15 @@
                                             <td class="product-thumbnail"><a href="#"><img src="Photos/SP/@item.SanPhamHinh.TenHinh" alt="" /></a></td>
                                             <td class="product-name"><a href="#">@item.SanPham.TenSanPham</a></td>
                                             <td class="product-price"><input type="hidden" id="proID" value="@item.SanPhamID" /> @string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</td>
-                                            <td class="product-quantity"><input type="number" data-item="@item.SanPhamID" id="itemQuantity" value="@item.SoLuong" /></td>  @*id="cart-quantity_@item.SanPhamID"*@ 
+                                            <td class="product-quantity"><input type="number"  class="itemQuantity" value="@item.SoLuong" /></td>  @*id="cart-quantity_@item.SanPhamID"*@ 
                                             <td class="product-subtotal totalProduct" id="changeQuantity">@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan * item.SoLuong) </td>
                                             <td class="product-remove"><a href="@Url.Action("_CartDetails","Cart", new { id = @item.SanPhamID, quantity = item.SoLuong })"><i class="fa fa-times"></i></a></td>
+                                            <td><input type="button" class="updateCart" data-item="@item.SanPhamID" value="CẬP NHẬT" /></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <input type="button" id="updateCart" value="CẬP NHẬT" />
+                           
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-7">

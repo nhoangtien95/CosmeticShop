@@ -122,15 +122,15 @@
 
         $(function () {
 
-            $('#updateCart').click(function () {
+            $('.updateCart').click(function () {
                 var id = $(this).data('item');
-                var quantity = $('#itemQuantity').val();
+                var quantity = $('.itemQuantity').val();
                 $.ajax({
                     url: "/gio-hang/cap-nhat-san-pham/" + id + "/" + quantity,
                     type: 'POST',
                     success: function () {
                         $('.mini-cart-content').load('@Url.Content("~/load-cart")'); 
-                        $('#CartDetails').load('@Url.Content("~/Cart")');
+                        $('#CartDetails').load('@Url.Content("~/gio")');
                     }
                 });
             });

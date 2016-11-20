@@ -1,26 +1,26 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
     var cart = ViewBag.Cart as ShopMyPham.ViewModel.CartModel;
     var user = Session["user"] as ShopMyPham.Models.QuanTri;
 }
 <script>
-    $(function () {
+   $(function () {
 
-        $('#updateCart').click(function () {
-            var id = $('#proID').val();
-            var quantity = $('#itemQuantity').val();
-            $.ajax({
-                url: "/gio-hang/cap-nhat-san-pham/" + id + "/" + quantity,
-                type: 'POST',
-                success: function () {
-                    $('.mini-cart-content').load('@Url.Content("~/load-cart")');
-                    $('#CartDetails').load('@Url.Content("~/Cart")');
-                }
+            $('.updateCart').click(function () {
+                var id = $(this).data('item');
+                var quantity = $('.itemQuantity').val();
+                $.ajax({
+                    url: "/gio-hang/cap-nhat-san-pham/" + id + "/" + quantity,
+                    type: 'POST',
+                    success: function () {
+                        $('.mini-cart-content').load('@Url.Content("~/load-cart")');
+                        $('#CartDetails').load('@Url.Content("~/gio")');
+                    }
+                });
             });
-        });
 
-    });
+        });
 </script>
 <h1>asdasdasdasasdasdDASDAS</h1>
 
@@ -60,21 +60,13 @@
                                 @foreach (var item in cart.Items)
                                 {
                                     <tr>
-                                        @*<td class="product-thumbnail"><a href="#"><img src="@cart.Items.FirstOrDefault().SanPhamHinh.TenHinh" alt="" /></a></td>
-                                            <td class="product-name"><a href="#">@cart.Items.FirstOrDefault().SanPham.TenSanPham</a></td>
-                                            <td class="product-price"><span class="amount">@string.Format("{0:#,##0 VND}", @cart.Items.FirstOrDefault().SanPham.GiaBan)</span></td>
-                                            <td class="product-quantity"><input type="number" id="cart-quantity" value="@cart.Items.FirstOrDefault().SoLuong" /></td>
-                                            <td class="product-subtotal">@string.Format("{0:#,##0 VND}", @cart.Items.FirstOrDefault().SanPham.GiaBan * cart.Items.FirstOrDefault().SoLuong) </td>
-                                            <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>*@
                                         <td class="product-thumbnail"><a href="#"><img src="Photos/SP/@item.SanPhamHinh.TenHinh" alt="" /></a></td>
                                         <td class="product-name"><a href="#">@item.SanPham.TenSanPham</a></td>
                                         <td class="product-price"><input type="hidden" id="proID" value="@item.SanPhamID" /> @string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</td>
-                                        <td class="product-quantity"><input type="number" data-item="@item.SanPhamID" id="itemQuantity" value="@item.SoLuong" /></td>  @*id="cart-quantity_@item.SanPhamID"*@
+                                        <td class="product-quantity"><input type="number" class="itemQuantity" value="@item.SoLuong" /></td>  @*id="cart-quantity_@item.SanPhamID"*@
                                         <td class="product-subtotal totalProduct" id="changeQuantity">@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan * item.SoLuong) </td>
-                                        <td class="product-remove">
-                                            <a href="@Url.Action("_CartDetails", "Cart", new { id = @item.SanPhamID, quantity = item.SoLuong })"><i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
+                                        <td class="product-remove"><a href="@Url.Action("_CartDetails","Cart", new { id = @item.SanPhamID, quantity = item.SoLuong })"><i class="fa fa-times"></i></a></td>
+                                        <td><input type="button" class="updateCart" data-item="@item.SanPhamID" value="CẬP NHẬT" /></td>
                                     </tr>
                                 }
                             </tbody>
