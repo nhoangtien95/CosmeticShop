@@ -92,9 +92,9 @@ namespace ShopMyPham.Controllers
         #region DeleteCart
 
         /// <summary>
-        ///     Add product to cart
+        ///     Delete product from cart
         /// </summary>
-        /// <param name="id">Compare product size id with resource</param>
+        /// <param name="id">Compare product id with resource</param>
         /// <returns>Info of cart</returns>
         [Route("gio-hang/xoa-san-pham/{id}")]
         [HttpPost]
@@ -107,7 +107,14 @@ namespace ShopMyPham.Controllers
 
         #endregion
 
-        [Route("gio")]
+
+        #region _CartDetails
+
+        /// <summary>
+        ///     Load cart after action
+        /// </summary>
+        /// <returns>Info of cart</returns>
+        [Route("gio-hang")]
         public PartialViewResult _CartDetails()
         {
             var cart = GetCart();
@@ -115,5 +122,49 @@ namespace ShopMyPham.Controllers
 
             return PartialView(cart);
         }
+        #endregion
+
+        #region CheckOutStep1
+
+        /// <summary>
+        ///     Save cart info
+        /// </summary>
+        /// <returns>Info of cart</returns>
+        /// 
+        public ActionResult CheckOutStep1()
+        {
+            var cart = GetCart();
+            var user = Session["user"] as QuanTri;
+
+            DonHang dh = new DonHang()
+            {
+                NgayDatHang = DateTime.UtcNow,
+                UserId = user.ID,
+                TenKhachHang = user.Ten,
+                DiaChi = user.DiaChi,
+                SoDienThoai = user.Sdt,
+                Tinhtrang = false
+            };
+            db.DonHangs.Add(dh);
+            db.SaveChanges();
+
+            foreach (var item in cart.Items)
+            {
+                DonHangChiTiet detail = new DonHangChiTiet()
+                {
+                    DonHangID = dh.DonHangID,
+                    SanPhamID = item.SanPhamID,
+                    SoLuong = item.SoLuong,
+                    DonGia = item.SanPham.GiaBan,
+                    ThanhTien = (item.SoLuong * item.SanPham.GiaBan)
+                };
+                db.DonHangChiTiets.Add(detail);
+                db.SaveChanges();
+            }
+            cart.Clear();
+            return RedirectToAction("Index");
+        }
+        #endregion
+
     }
 }

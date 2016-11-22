@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="DonHangID" />
           </Key>
-          <Property Name="DonHangID" Type="int" Nullable="false" />
+          <Property Name="DonHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NgayDatHang" Type="datetime" Nullable="false" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="510" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="250" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
           <Property Name="Tinhtrang" Type="bit" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="DonHangChiTiet">
           <Key>
@@ -185,7 +185,6 @@
           <EntitySet Name="Loais" EntityType="Self.Loai" />
           <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
           <EntitySet Name="SanPhamHinhs" EntityType="Self.SanPhamHinh" />
-          <EntitySet Name="DonHangs" EntityType="ShopMyPhamModel.DonHang" />
           <EntitySet Name="DonHangChiTiets" EntityType="ShopMyPhamModel.DonHangChiTiet" />
           <EntitySet Name="QuanTris" EntityType="ShopMyPhamModel.QuanTri" />
           <EntitySet Name="KhuyenMais" EntityType="ShopMyPhamModel.KhuyenMai" />
@@ -195,20 +194,8 @@
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="SanPhamHinh" EntitySet="SanPhamHinhs" />
           </AssociationSet>
+          <EntitySet Name="DonHangs" EntityType="ShopMyPhamModel.DonHang" />
         </EntityContainer>
-        <EntityType Name="DonHang">
-          <Key>
-            <PropertyRef Name="DonHangID" />
-          </Key>
-          <Property Name="DonHangID" Type="Int32" Nullable="false" />
-          <Property Name="NgayDatHang" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TenKhachHang" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Tinhtrang" Type="Boolean" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="DonHangChiTiet">
           <Key>
             <PropertyRef Name="DonHangID" />
@@ -275,6 +262,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="DonHangID" />
+          </Key>
+          <Property Name="DonHangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayDatHang" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TenKhachHang" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tinhtrang" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -319,20 +319,6 @@
                 <ScalarProperty Name="TenHinh" ColumnName="TenHinh" />
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
                 <ScalarProperty Name="ThuTuHienThi" ColumnName="ThuTuHienThi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DonHangs">
-            <EntityTypeMapping TypeName="ShopMyPhamModel.DonHang">
-              <MappingFragment StoreEntitySet="DonHang">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Tinhtrang" ColumnName="Tinhtrang" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
-                <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
-                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -391,6 +377,20 @@
                 <ScalarProperty Name="IDHinh" ColumnName="IDHinh" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonHangs">
+            <EntityTypeMapping TypeName="ShopMyPhamModel.DonHang">
+              <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Tinhtrang" ColumnName="Tinhtrang" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+                <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

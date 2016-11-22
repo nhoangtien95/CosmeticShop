@@ -21,6 +21,6 @@ namespace ShopMyPham.Models
         public string SoDienThoai { get; set; }
         public string GhiChu { get; set; }
         public bool Tinhtrang { get; set; }
-        public string UserId { get; set; }
+        public Nullable<int> UserId { get; set; }
     }
 }

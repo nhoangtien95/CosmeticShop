@@ -92,7 +92,7 @@
                 $.ajax({
                     //url: @Url.Action("AddToCart", "Cart"),
                     // data: { 'id': id, 'quantity': quantity },
-                    url: "/gio-hang/them-san-pham/" + id + "/" + quantity,                   
+                    url: "/gio-hang/them-san-pham/" + id + "/" + quantity,
                     type: 'POST',
                     success: function () {
                         $('.mini-cart-content').load('@Url.Content("~/load-cart")');
@@ -114,6 +114,25 @@
                     type: 'POST',
                     success: function () {
                         $('.mini-cart-content').load('@Url.Content("~/load-cart")');
+                        $('#CartDetails').load('@Url.Content("~/gio-hang")');
+                    }
+                });
+            });
+
+        });
+
+        $(function () {
+
+            $('.removeCheckout').click(function () {
+
+                var id = $(this).data('item_remove');
+                $.ajax({
+                    url: "/gio-hang/xoa-san-pham/" + id,
+                    data: { 'id': id },
+                    type: 'POST',
+                    success: function () {
+                        $('.mini-cart-content').load('@Url.Content("~/load-cart")');
+                        $('#CartDetails').load('@Url.Content("~/gio-hang")');
                     }
                 });
             });
@@ -129,34 +148,13 @@
                     url: "/gio-hang/cap-nhat-san-pham/" + id + "/" + quantity,
                     type: 'POST',
                     success: function () {
-                        $('.mini-cart-content').load('@Url.Content("~/load-cart")'); 
-                        $('#CartDetails').load('@Url.Content("~/gio")');
+                        $('.mini-cart-content').load('@Url.Content("~/load-cart")');
+                        $('#CartDetails').load('@Url.Content("~/gio-hang")');
                     }
                 });
             });
 
         });
-
-        @*$(function () {
-
-            $('#updateCart').click(function () {
-
-                var quantity = $('#cart-quantity').val();
-                var id = $('#cart-product-id').val();
-                var price = $('#proPrice').val();
-                var total = price * quantity;
-                alert(quantity + "  " + price);
-                $.ajax({
-                    url: "/gio-hang/cap-nhat-san-pham/" + id + "/" + quantity,
-                    type: 'POST',
-                    success: function () {
-                        $('.mini-cart-content').load('@Url.Content("~/load-cart")');
-                        $('#changeQuantity').html(total + " VND");
-                    }
-                });
-            });
-
-        });*@
 
     </script>
 

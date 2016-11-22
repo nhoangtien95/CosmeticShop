@@ -10,11 +10,6 @@ namespace ShopMyPham.ViewModel
     {
         public List<CartItem> Items { get; } = new List<CartItem>();
 
-        public void Clear()
-        {
-            Items.Clear();
-        }
-
         public void Add(CartItem item)
         {
             var cartItem = Items.Find(product => product.SanPhamID == item.SanPhamID);
@@ -40,6 +35,11 @@ namespace ShopMyPham.ViewModel
         {
             var item = Items.Find(product => product.SanPhamID == SanPhamID);
             Items.Remove(item);
+        }
+
+        public void Clear()
+        {
+            Items.Clear();
         }
     }
 }

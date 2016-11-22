@@ -28,11 +28,11 @@ namespace ShopMyPham.Models
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SanPhamHinh> SanPhamHinhs { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<DonHangChiTiet> DonHangChiTiets { get; set; }
         public virtual DbSet<QuanTri> QuanTris { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieux { get; set; }
         public virtual DbSet<SalePromotion> SalePromotions { get; set; }
+        public virtual DbSet<DonHang> DonHangs { get; set; }
     }
 }
