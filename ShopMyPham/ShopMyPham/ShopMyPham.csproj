@@ -228,6 +228,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CartItem.cs" />
     <Compile Include="ViewModel\CartModel.cs" />
+    <Compile Include="ViewModel\SearchModel.cs" />
     <Compile Include="ViewModel\IndexViewModel.cs" />
     <Compile Include="ViewModel\PromotionPartialViewModel.cs" />
   </ItemGroup>
@@ -286,6 +287,15 @@
     <Content Include="Content\js.2\jquery.carouFredSel-6.2.1-packed.js" />
     <Content Include="Content\js.2\jquery.min.js" />
     <Content Include="Content\js.2\modernizr.custom.56918.js" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.css" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.js" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.min.css" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.min.js" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.structure.css" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.structure.min.css" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.theme.css" />
+    <Content Include="Content\js\AutoComplete\jquery-ui.theme.min.css" />
+    <Content Include="Content\js\AutoComplete\jquery.js" />
     <Content Include="Content\js\jquery.collapse.js" />
     <Content Include="Content\js\jquery.countdown.min.js" />
     <Content Include="Content\js\jquery.scrollUp.min.js" />
@@ -351,6 +361,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\AutoComplete\package.json" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

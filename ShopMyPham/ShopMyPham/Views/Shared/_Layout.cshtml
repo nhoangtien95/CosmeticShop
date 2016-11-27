@@ -73,15 +73,49 @@
 
     <!-- modernizr js
     ============================================ -->
-    <script src="/Content/js/vendor/modernizr-2.8.3.min.js"></script>
+    @*<script src="/Content/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <link rel="stylesheet" href="~/Content/js.2/rs-plugin/css/settings.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/js.2/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/js.2/prettyphoto/css/prettyPhoto.css" type="text/css" />
     <script src="~/Content/js.2/jquery.min.js"></script>
-    <script src="~/Content/js.2/modernizr.custom.56918.js"></script>
+    <script src="~/Content/js.2/modernizr.custom.56918.js"></script>*@
+
+    <script src="~/Content/js/AutoComplete/jquery.js"></script>
+    <link href="~/Content/js/AutoComplete/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/js/AutoComplete/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/js/AutoComplete/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="~/Content/js/AutoComplete/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/Content/js/AutoComplete/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/js/AutoComplete/jquery-ui.theme.min.css" rel="stylesheet" />
+    <script src="~/Content/js/AutoComplete/jquery-ui.js"></script>
+    <script src="~/Content/js/AutoComplete/jquery-ui.min.js"></script>
+    
+
 
     <script>
+
+        $(function () {
+            $('#productSearch').autocomplete({
+                source: '@Url.Action("Search", "Home")',
+                focus: function (event, ui) {
+                    $("#productSearch").val(ui.item.TenSanPham);
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("#productSearch").val(ui.item.TenSanPham);
+
+                    return false;
+                }
+            })
+            .data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                  .data("ui-autocomplete-item", item)
+                  .append(item.TenSanPham + item.TenHinh)
+                  .appendTo(ul);
+            };
+        });
+        
 
         $(function () {
 
@@ -184,7 +218,7 @@
 
     <!-- JS -->
     <!-- jquery js -->
-    <script src="/Content/js/vendor/jquery-1.11.2.min.js"></script>
+    @*<script src="/Content/js/vendor/jquery-1.11.2.min.js"></script>*@
 
     <!-- bootstrap js -->
     <script src="/Content/js/bootstrap.min.js"></script>

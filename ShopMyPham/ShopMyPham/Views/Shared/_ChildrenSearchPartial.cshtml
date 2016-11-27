@@ -1,22 +1,15 @@
 ﻿@model List<ShopMyPham.Models.Loai>
 
+
+
     <div class="top-category">
         <ul>
             <li>
-                <a href="#">All Categories</a>
-                <ul>
-                    <li><a href="#">All Categories</a></li>
-                    @foreach (var item in Model)
-                {
-                        <li><a href="#">@item.Ten</a></li>
-                    }
-                </ul>
+                <a href="#">Tìm kiếm</a>
             </li>
             <li class="search-top">
-                <form action="#">
-                    <input type="text" placeholder="Tìm kiếm..." />
+                    <input type="text" id="productSearch" placeholder="Tìm kiếm..." />
                     <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
             </li>
         </ul>
     </div>

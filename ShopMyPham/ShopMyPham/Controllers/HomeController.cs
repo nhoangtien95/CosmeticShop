@@ -22,18 +22,24 @@ namespace ShopMyPham.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            //var loai = db.Loais.OrderBy(x => x.ID).Where(x => x.ChungLoaiID == null).ToList();
-            //var thuonghieu = db.ThuongHieux.OrderBy(x => x.TenTH).Where(x => x.TrangThai == 1).ToList();
-            //var model = new ViewModel.IndexViewModel(loai, thuonghieu);
             return View();
         }
         #endregion
+
+
+        #region Index
+
+        /// <summary>
+        ///     Hiển thị giỏ hàng ở layout
+        /// </summary>
         public PartialViewResult _HeaderTopPartial()
         {
             ViewBag.Cart = GetCart();
             var cart = GetCart();
             return PartialView(cart);
         }
+        #endregion
+
 
         #region MainMenu-Partial
 
@@ -190,7 +196,21 @@ namespace ShopMyPham.Controllers
         }
         #endregion
 
+        #region Search
 
+        /// <summary>
+        ///     Tìm kiếm
+        /// </summary>
+        /// 
+        public ActionResult Search(string term)
+        {
+            List<SanPham> list = new List<SanPham>();
+            list = db.SanPhams.Include("SanPhamHinhs").Where(x => x.TenSanPham.Contains(term)).ToList();
+
+            return Json(list.Select(x => new { TenSanPham = x.TenSanPham, TenHinh = x.SanPhamHinhs.FirstOrDefault().TenHinh }), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
 
         public ActionResult About()
