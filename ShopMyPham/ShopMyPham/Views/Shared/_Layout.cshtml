@@ -91,17 +91,42 @@
     <script src="~/Content/js/AutoComplete/jquery-ui.js"></script>
     <script src="~/Content/js/AutoComplete/jquery-ui.min.js"></script>
     
+    <style>
+        .searchImg{
+            float:left;
+            max-height:120px;
+            max-width:75px;
+            height:120px;
+            width:75px;
+        }
+        .ui-menu-item {
+            overflow:hidden;
+            width:402px;
+        }
+        .searchStr{
+            position:relative;
+            float:left;
+        }
 
+            .test{
+                margin-top:25px;
+                float:left;
+                position:relative;
+                color:hotpink;
+                width:300px;
+                height:100px;
+            }
+    </style>
 
     <script>
 
         $(function () {
             $('#productSearch').autocomplete({
                 source: '@Url.Action("Search", "Home")',
-                focus: function (event, ui) {
-                    $("#productSearch").val(ui.item.TenSanPham);
-                    return false;
-                },
+                //focus: function (event, ui) {
+                //    $("#productSearch").val(ui.item.TenSanPham);
+                //    return false;
+                //},
                 select: function (event, ui) {
                     $("#productSearch").val(ui.item.TenSanPham);
 
@@ -111,11 +136,19 @@
             .data("ui-autocomplete")._renderItem = function (ul, item) {
                 return $("<li>")
                   .data("ui-autocomplete-item", item)
-                  .append(item.TenSanPham + item.TenHinh)
+                  .append("<div class=\"searchStr\">" + "<img class=\"searchImg\" src='/Photos/SP/" + item.TenHinh + "' />" + "<div class=\"test\"><a>" + item.TenSanPham + "</a></div> </div>")
                   .appendTo(ul);
             };
         });
         
+        //Giới hạn kết quả trả về là 5
+        $.ui.autocomplete.prototype._renderMenu = function (ul, items) {
+            var self = this;
+            $.each(items, function (index, item) {
+                if (index <= 5) // here we define how many results to show
+                { self._renderItem(ul, item); }
+            });
+        }
 
         $(function () {
 
