@@ -122,14 +122,13 @@
 
         $(function () {
             $('#productSearch').autocomplete({
-                source: '@Url.Action("Search", "Home")',
+                source: '@Url.Action("Autocomplete", "Home")',
                 //focus: function (event, ui) {
                 //    $("#productSearch").val(ui.item.TenSanPham);
                 //    return false;
                 //},
                 select: function (event, ui) {
                     $("#productSearch").val(ui.item.TenSanPham);
-
                     return false;
                 }
             })

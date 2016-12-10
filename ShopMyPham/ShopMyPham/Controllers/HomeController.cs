@@ -196,18 +196,39 @@ namespace ShopMyPham.Controllers
         }
         #endregion
 
-        #region Search
+        #region AutoComplete
 
         /// <summary>
-        ///     Tìm kiếm
+        ///     Tìm kiếm autocomplete
         /// </summary>
-        /// 
-        public ActionResult Search(string term)
+        /// <returns>5 kết quả tìm kiếm</returns>
+        public ActionResult Autocomplete(string term)
         {
             List<SanPham> list = new List<SanPham>();
             list = db.SanPhams.Include("SanPhamHinhs").Where(x => x.TenSanPham.Contains(term)).ToList();
 
             return Json(list.Select(x => new { TenSanPham = x.TenSanPham, TenHinh = x.SanPhamHinhs.FirstOrDefault().TenHinh }), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region Search
+
+        /// <summary>
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        [Route("tim-kiem/result")]
+        public ActionResult Search(string result)
+        {
+            ViewBag.searchProducts = db.SanPhams.Include("SanPhamHinhs").Where(x => x.TenSanPham.Contains(result)).ToList();
+          
+            ViewBag.Title = "Kết quả tìm kiếm " + result;
+            var countResult = db.SanPhams.Where(x => x.TenSanPham.Contains(result)).Count();
+            ViewBag.Count = "Có " + countResult + " kết quả tương ứng";
+            return View();
         }
 
         #endregion

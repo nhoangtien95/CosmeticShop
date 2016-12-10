@@ -36,11 +36,7 @@ namespace ShopMyPham.Controllers
             var productDetails = db.SanPhams.Include("SanPhamHinhs").SingleOrDefault(x => x.SanPhamID == id);
             ViewBag.Brand = db.ThuongHieux.Where(x => x.ID == productDetails.IDThuongHieu).ToList();
 
-            //if (productDetails == null)
-            //{
-            //    return View("404");
-            //}
-
+          
             //Sản phẩm liên quan
             var presentProduct = db.SanPhams.Where(x => x.SanPhamID == viewModel.SanPhamID); 
             ViewBag.relatedProduct = db.SanPhams.Where(x => x.IDLoai == viewModel.IDLoai || x.IDThuongHieu == viewModel.IDThuongHieu).Except(presentProduct).ToList() ;
