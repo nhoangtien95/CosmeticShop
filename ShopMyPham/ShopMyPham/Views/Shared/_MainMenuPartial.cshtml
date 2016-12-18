@@ -9,10 +9,11 @@
     var skin = ViewBag.Skin as List<ShopMyPham.Models.Loai>;
 }
 
-
+<style>
+</style>
 
 <!-- mainmenu-area start -->
-<div class="mainmenu-area">
+<div class="mainmenu-area" >
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -24,12 +25,11 @@
                             </li>
 
                             <li>
-                                <a href="shop.html">Thương Hiệu<span><i class="fa fa-caret-down"></i></span></a>
-                                <div class="mega-menu" style="background-color:azure ">
+                                <a href="@Url.Action("allBrand","Home")">Thương Hiệu<span><i class="fa fa-caret-down"></i></span></a>
+                                <div class="mega-menu" style="background-color:azure; ">
                                     @foreach (var th in thuonghieu)
                                     {
                                         <span>                                            
-                                            @*<a class="mega-menu-title" href="#" style="text-align:center">@th.TenTH</a>*@
                                             @Html.ActionLink(th.TenTH, "BrandCategory", "Category", new { id = th.ID }, new { @class = "mega-menu-title", @style = "text-align:center" })
                                             @Html.Raw(@Html.ActionLink("[replacetext]", "BrandCategory", "Category", new { id = th.ID }, null).ToHtmlString().Replace("[replacetext]",
                                        "<img style=\"display:block; margin:0 auto; max-height:75px; max-width:75px; height:75px; width:75px\" src =\"/Photos/ThuongHieu/" + @th.HinhTH + "\" />"))
@@ -43,8 +43,8 @@
                                 {
                                     @Html.ActionLink(item.Ten,"MenuCategory", "Category", new { id = item.ID },null)
 
-                                    <div class="mega-menu">
-                                        <span>
+                                    <div class="mega-menu" style="width:300px;" >
+                                        <span style="width:200px;">
                                             @Html.Action("_ChildrenMenuPartial", "Home", new { ParentID = @item.ID })
                                         </span>
 
@@ -57,8 +57,8 @@
                                 {
                                     @Html.ActionLink(item.Ten, "MenuCategory", "Category", new { id = item.ID }, null)
 
-                                    <div class="mega-menu">
-                                        <span>
+                                    <div class="mega-menu" style="width:300px;">
+                                        <span style="width:200px;">
                                             @Html.Action("_ChildrenMenuPartial", "Home", new { ParentID = @item.ID })
                                         </span>
 
@@ -71,8 +71,8 @@
                                 {
                                     @Html.ActionLink(item.Ten, "MenuCategory", "Category", new { id = item.ID }, null)
 
-                                    <div class="mega-menu">
-                                        <span>
+                                    <div class="mega-menu" style="width:300px;">
+                                        <span style="width:200px;">
                                             @Html.Action("_ChildrenMenuPartial", "Home", new { ParentID = @item.ID })
                                         </span>
 
@@ -85,8 +85,8 @@
                                 {
                                     @Html.ActionLink(item.Ten, "MenuCategory", "Category", new { id = item.ID }, null)
 
-                                    <div class="mega-menu">
-                                        <span>
+                                    <div class="mega-menu" style="width:300px;" >
+                                        <span style="width:200px;">
                                             @Html.Action("_ChildrenMenuPartial", "Home", new { ParentID = @item.ID })
                                         </span>
 
@@ -106,8 +106,8 @@
                                 {
                                     @Html.ActionLink(item.Ten, "MenuCategory", "Category", new { id = item.ID }, null)
 
-                                    <div class="mega-menu">
-                                        <span>
+                                    <div class="mega-menu" style="width:300px;" >
+                                        <span style="width:200px;">
                                             @Html.Action("_ChildrenMenuPartial", "Home", new { ParentID = @item.ID })
                                         </span>
 

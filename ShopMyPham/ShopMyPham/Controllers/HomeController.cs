@@ -233,10 +233,10 @@ namespace ShopMyPham.Controllers
 
         #endregion
 
-
-        public ActionResult About()
+        [Route("thuong-hieu")]
+        public ActionResult allBrand()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.ThuongHieu = db.ThuongHieux.OrderBy(x => x.TenTH).Where(x => x.TrangThai == 1).ToList();
             return View();
         }
 

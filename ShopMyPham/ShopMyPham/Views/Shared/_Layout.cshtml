@@ -144,7 +144,7 @@
         $.ui.autocomplete.prototype._renderMenu = function (ul, items) {
             var self = this;
             $.each(items, function (index, item) {
-                if (index <= 5) // here we define how many results to show
+                if (index <= 5) // Số lượng muôn
                 { self._renderItem(ul, item); }
             });
         }
@@ -241,8 +241,10 @@
 
 
     </header>
-    @RenderBody()
-
+    <div style="padding-left:75px;">
+        @RenderBody()
+    </div>
+     <br /><br /><br />
     @*Brand area*@
     @Html.Action("_BrandPartial", "Home")
     @*Footer area*@
