@@ -6,10 +6,14 @@
     var relatedProduct = ViewBag.relatedProduct as List<ShopMyPham.Models.SanPham>;
 }
 
+<style>
+    .buyProduct:hover{
+        box-shadow: 0px 0px 9px rgba(0, 0, 0, 10);
+    }
+</style>
 
 
-
-
+<br /><br />
 <!-- product-main-area start -->
 <div class="product-main-area">
     <div class="container">
@@ -20,8 +24,7 @@
                     <div class="product-page-2-tab">
                         <div>
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                            </ul>
+                            <ul class="nav nav-tabs" role="tablist"></ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -37,7 +40,7 @@
             <div class="col-lg-5 col-md-5 col-sm-12">
                 <div class="product-page-content" style="overflow:hidden">
                     <div class="pro-page-title">
-                        <h1>@Model.TenSanPham</h1>                        
+                        <h1>@Model.TenSanPham</h1>
                     </div>
                     <div class="product-page-rating">
                         <a href="#"><i class="fa fa-star"></i></a>
@@ -49,19 +52,40 @@
                     <div class="stock-status">
                         <p>In stock</p>
                     </div>
-                    <div class="product-page-price">
-                        <span class="old-price">@string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
-                        <br />
-                        <span class="pro-price">@string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
-                    </div>
+                    @if (Model.IDKhuyenMai == 1)
+                    {
+                        <div class="product-page-price">
+                            <span class="pro-price">@string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
+                        </div>
+                    }
+                    else if (Model.IDKhuyenMai == 2)
+                    {
+                        var sale = Model.GiaBan;
+                        var price = sale - ( sale * Convert.ToDecimal(0.2) );
+                        <div class="product-page-price">
+                            <span class="old-price">@string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
+                            <br />
+                            <span class="pro-price">@string.Format("{0:#,##0 VND}", price)</span>
+                        </div>
+                    }
+                    else
+                    {
+                        var sale = Model.GiaBan;
+                        var price = sale - (sale * Convert.ToDecimal(0.1));
+                        <div class="product-page-price">
+                            <span class="old-price">@string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
+                            <br />
+                            <span class="pro-price">@string.Format("{0:#,##0 VND}", price)</span>
+                        </div>
+                    }
                     <div class="pro-shor-desc">
                         <p>@Model.Mota</p>
-                    </div>                    
-                    <div class="product-total-cart">
-                            <input type="number" id="quantity" value="1"  />
-                            <input type="hidden" id="product-id" value="@Model.SanPhamID" />
-                            <input type="button" class="buyProduct" value="Click Me" />
-                    </div>                   
+                    </div>
+                    <div class="product-total-cart" style="height:65px; padding-top:6px;">
+                        <input type="number" id="quantity" value="1" min="1" max="10" />
+                        <input type="hidden" id="product-id" value="@Model.SanPhamID" />
+                        <input type="button" class="buyProduct btn btn-default" style="width:120px;" value="Đặt Hàng" />
+                    </div>
 
                     <div class="product-meta">
                         <span class="posted-in">
@@ -70,40 +94,40 @@
                         </span>
                     </div>
 
-                    <div id="show_message"  style="display:none" >@*class="product-page-price">*@
-                        <div class="alert alert-warning" role="alert">
-                            <span class="pro-price"> Đã thêm sản phẩm vào giỏ hàng </span>
-                        </div>
+                    <div id="show_message" style="display:none">
+                        @*class="product-page-price">*@
+                    <div class="alert alert-warning" role="alert">
+                        <span class="pro-price"> Đã thêm sản phẩm vào giỏ hàng </span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="product-share-icon">
-                    <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="product-share-icon">
+                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="product-tab">
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mô Tả</a></li>
-                        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="product-tab">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mô Tả</a></li>
+                    </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <div class="product-page-tab-content">
-                                    @foreach (var item in Model.SanPhamHinhs.Skip(1))
-                                    {
-                                        <img style="display:block; margin:0 auto" src="~/Photos/SP/@item.TenHinh" />
-                                    }
-                                </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="product-page-tab-content">
+                                @foreach (var item in Model.SanPhamHinhs.Skip(1))
+                                {
+                                    <img style="display:block; margin:0 auto" src="~/Photos/SP/@item.TenHinh" />
+                                }
                             </div>
                         </div>
                     </div>
@@ -111,6 +135,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- product-main-area end -->
 
@@ -128,9 +153,9 @@
                     {
                         <div class="single-category-tab">
                             <div class="single-features">
-                                    @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = item.SanPhamID, name = item.SEO }, null).ToHtmlString().Replace("[replacetext]",
+                                @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = item.SanPhamID, name = item.SEO }, null).ToHtmlString().Replace("[replacetext]",
                                "<img style=\"display: block; margin:0 auto; padding-top:10px; max - width: 150px; max - height: 150px; width: 150px; height: 150px;\" class=\"first-img\"  src =\"/Photos/SP/" + item.SanPhamHinhs.First().TenHinh + "\" />"))
-                          
+
                                 <div class="product-content">
                                     <h5>@Html.ActionLink(item.TenSanPham, "Index", "Category", new { id = item.SanPhamID, name = item.SEO }, null)</h5>
                                     <span class="pro-price" style="text-align:center">@string.Format("{0:#,##0 VND}", @item.GiaBan)</span>

@@ -1,30 +1,31 @@
 ﻿@model List<ShopMyPham.Models.ThuongHieu>
 @*Brand area*@
-<div class="brand-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h3>Các Thương Hiệu</h3>
+<div style="padding-left:75px;">
+    <div class="brand-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h3>Các Thương Hiệu</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="brand-curosel">
-                    @foreach (var item in Model)
-                    {
+                <div class="col-md-12">
+                    <div class="brand-curosel">
+                        @foreach (var item in Model)
+                        {
                      <!-- brand-img start -->
-                         <div class="brand-img">
-                             @Html.Raw(@Html.ActionLink("[replacetext]", "BrandCategory", "Category", new { id = item.ID }, null).ToHtmlString().Replace("[replacetext]",
+                            <div class="brand-img">
+                                @Html.Raw(@Html.ActionLink("[replacetext]", "BrandCategory", "Category", new { id = item.ID }, null).ToHtmlString().Replace("[replacetext]",
                                        "<img style=\"display:block; margin:0 auto; max-height: 135px; max-width:135px; height:135px; width:135px;\" src =\"/Photos/ThuongHieu/" + item.HinhTH + "\" />"))
-                         </div>
+                            </div>
                      <!-- brand-img end -->
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @*corporate about area*@
 <div class="corporate-about-area">
     <div class="container">

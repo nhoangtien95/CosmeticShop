@@ -3,202 +3,204 @@
     var mostView = ViewBag.mostView as List<ShopMyPham.Models.SanPham>;
     int count = 0; int hinh = 0;
 }
-<!-- category-area start -->
-<div class="category-area">
-    <div class="container">
-        <div class="row">
-            <div class="sale-curosel1">
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="sale-title">
-                        <h3>Best selling</h3>
-                    </div>
-                    <div class="sale-curosel">
-                        <!-- product start -->
-                        <div class="single-features">
-                            <span class="sale-text">Sale</span>
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="first-img" src="/Content/img/product/3.jpg" alt="" />
-                                    <img class="second-img" src="/Content/img/product/4.jpg" alt="" />
-                                </a>
-                                <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                <div class="action-buttons">
-                                    <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                    <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                    <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
-                                </div>
-                            </div>
-                            <div class="timer">
-                                <div data-countdown="2016/05/01"></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="pro-rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-o"></i></a>
-                                </div>
-                                <h5><a href="#">Etiam molestie</a></h5>
-                                <span class="old-price">£230.00</span>
-                                <span class="pro-price">£220.00</span>
-                            </div>
+<div style="padding-left:75px;">
+    <!-- category-area start -->
+    <div class="category-area">
+        <div class="container">
+            <div class="row">
+                <div class="sale-curosel1">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="sale-title">
+                            <h3>Best selling</h3>
                         </div>
-                        <!-- product end -->
-                        <!-- product start -->
-                        <div class="single-features">
-                            <span class="sale-text">Sale</span>
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="first-img" src="/Content/img/product/5.jpg" alt="" />
-                                    <img class="second-img" src="/Content/img/product/6.jpg" alt="" />
-                                </a>
-                                <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                <div class="action-buttons">
-                                    <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                    <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                    <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
-                                </div>
-                            </div>
-                            <div class="timer">
-                                <div data-countdown="2016/04/01"></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="pro-rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-o"></i></a>
-                                </div>
-                                <h5><a href="#">Aenean eu tristique</a></h5>
-                                <span class="old-price">£80.00</span>
-                                <span class="pro-price">£70.00</span>
-                            </div>
-                        </div>
-                        <!-- product end -->
-                        <!-- product start -->
-                        <div class="single-features">
-                            <span class="sale-text">Sale</span>
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="first-img" src="/Content/img/product/10.jpg" alt="" />
-                                    <img class="second-img" src="/Content/img/product/11.jpg" alt="" />
-                                </a>
-                                <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                <div class="action-buttons">
-                                    <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                    <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                    <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
-                                </div>
-                            </div>
-                            <div class="timer">
-                                <div data-countdown="2016/03/01"></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="pro-rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-o"></i></a>
-                                </div>
-                                <h5><a href="#">Phasellus vel hendrerit</a></h5>
-                                <span class="old-price">£100.00</span>
-                                <span class="pro-price">£80.00</span>
-                            </div>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="category-tab">
-                    <div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Sản Phâm Mơi</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Bán Chạy</a></li>
-                            @*<li role="presentation"><a href="#mostview" aria-controls="messages" role="tab" data-toggle="tab">Top Rated</a></li>*@
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <div class="row">
-                                    <div class="category-curosel">
-                                        @for (int i = 0; i < (newArrival.Count() / 3); i++)
-                                        {
-                                        <div class="col-md-6">
-                                            @{ do
-                                                   {
-                                                            <!-- single-category-tab start -->
-                                                <div class="single-category-tab">
-                                                    <div class="single-features">
-                                                        <div class="product-img">
-                                                            @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = newArrival[hinh].SanPhamID, name = newArrival[hinh].SEO }, null).ToHtmlString().Replace("[replacetext]",
-"<img style=\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"first-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"second-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
-                                                        </div>
-                                                        <div class="product-content">
-                                                            <div class="pro-rating">
-                                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                            </div>
-                                                            <h5>@Html.ActionLink(@newArrival[hinh].TenSanPham, "Index", "Category", new { id = @newArrival[hinh].SanPhamID, name = @newArrival[hinh].SEO }, null)</h5>
-                                                            <span class="pro-price">@string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan)</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                            <!-- single-category-tab end -->
-                                                       count++;
-                                                       hinh++;
-                                                   }
-                                                   while (count < 3 && hinh < newArrival.Count());
-                                            }
-                                        </div>
-                                                       count = 0;
-                                                   }
+                        <div class="sale-curosel">
+                            <!-- product start -->
+                            <div class="single-features">
+                                <span class="sale-text">Sale</span>
+                                <div class="product-img">
+                                    <a href="#">
+                                        <img class="first-img" src="/Content/img/product/3.jpg" alt="" />
+                                        <img class="second-img" src="/Content/img/product/4.jpg" alt="" />
+                                    </a>
+                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
+                                    <div class="action-buttons">
+                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
+                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
+                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
                                     </div>
                                 </div>
+                                <div class="timer">
+                                    <div data-countdown="2016/05/01"></div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="pro-rating">
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star-o"></i></a>
+                                    </div>
+                                    <h5><a href="#">Etiam molestie</a></h5>
+                                    <span class="old-price">£230.00</span>
+                                    <span class="pro-price">£220.00</span>
+                                </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="profile">
-                                <div class="row">
-                                    <div class="category-curosel">
-                                        @{ hinh = 0;}
-                                        @for (int i = 0; i < (mostView.Count() / 3); i++)
-                                        {
-                                            <div class="col-md-6">
-                                                @{ do
-                                                    {
-                                                            <!-- single-category-tab start -->
-                                                        <div class="single-category-tab">
-                                                            <div class="single-features">
-                                                                <div class="product-img">
-                                                                    @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = mostView[hinh].SanPhamID, name = newArrival[hinh].SEO }, null).ToHtmlString().Replace("[replacetext]",
-"<img style=\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"first-img\"  src =\"/Photos/SP/" + mostView[hinh].SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"second-img\"  src =\"/Photos/SP/" + mostView[hinh].SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
+                            <!-- product end -->
+                            <!-- product start -->
+                            <div class="single-features">
+                                <span class="sale-text">Sale</span>
+                                <div class="product-img">
+                                    <a href="#">
+                                        <img class="first-img" src="/Content/img/product/5.jpg" alt="" />
+                                        <img class="second-img" src="/Content/img/product/6.jpg" alt="" />
+                                    </a>
+                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
+                                    <div class="action-buttons">
+                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
+                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
+                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
+                                    </div>
+                                </div>
+                                <div class="timer">
+                                    <div data-countdown="2016/04/01"></div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="pro-rating">
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star-o"></i></a>
+                                    </div>
+                                    <h5><a href="#">Aenean eu tristique</a></h5>
+                                    <span class="old-price">£80.00</span>
+                                    <span class="pro-price">£70.00</span>
+                                </div>
+                            </div>
+                            <!-- product end -->
+                            <!-- product start -->
+                            <div class="single-features">
+                                <span class="sale-text">Sale</span>
+                                <div class="product-img">
+                                    <a href="#">
+                                        <img class="first-img" src="/Content/img/product/10.jpg" alt="" />
+                                        <img class="second-img" src="/Content/img/product/11.jpg" alt="" />
+                                    </a>
+                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
+                                    <div class="action-buttons">
+                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
+                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
+                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
+                                    </div>
+                                </div>
+                                <div class="timer">
+                                    <div data-countdown="2016/03/01"></div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="pro-rating">
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star-o"></i></a>
+                                    </div>
+                                    <h5><a href="#">Phasellus vel hendrerit</a></h5>
+                                    <span class="old-price">£100.00</span>
+                                    <span class="pro-price">£80.00</span>
+                                </div>
+                            </div>
+                            <!-- product end -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <div class="category-tab">
+                        <div>
 
-                                                                </div>
-                                                                <div class="product-content">
-                                                                    <div class="pro-rating">
-                                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                                        <a href="#"><i class="fa fa-star"></i></a>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Sản Phâm Mơi</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Bán Chạy</a></li>
+                                @*<li role="presentation"><a href="#mostview" aria-controls="messages" role="tab" data-toggle="tab">Top Rated</a></li>*@
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <div class="row">
+                                        <div class="category-curosel">
+                                            @for (int i = 0; i < (newArrival.Count() / 3); i++)
+                                            {
+                                                <div class="col-md-6">
+                                                    @{ do
+                                                        {
+                                                            <!-- single-category-tab start -->
+                                                            <div class="single-category-tab">
+                                                                <div class="single-features">
+                                                                    <div class="product-img">
+                                                                        @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = newArrival[hinh].SanPhamID, name = newArrival[hinh].SEO }, null).ToHtmlString().Replace("[replacetext]",
+"<img style=\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"first-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"second-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
                                                                     </div>
-                                                                    <h5>@Html.ActionLink(@mostView[hinh].TenSanPham, "Index", "Category", new { id = @mostView[hinh].SanPhamID, name = @mostView[hinh].SEO }, null)</h5>
-                                                                    <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan)</span>
+                                                                    <div class="product-content">
+                                                                        <div class="pro-rating">
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                        </div>
+                                                                        <h5>@Html.ActionLink(@newArrival[hinh].TenSanPham, "Index", "Category", new { id = @newArrival[hinh].SanPhamID, name = @newArrival[hinh].SEO }, null)</h5>
+                                                                        <span class="pro-price">@string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan)</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                             <!-- single-category-tab end -->
-                                                        count++;
-                                                        hinh++;
+                                                            count++;
+                                                            hinh++;
+                                                        }
+                                                        while (count < 3 && hinh < newArrival.Count());
                                                     }
-                                                    while (count < 3 && hinh < newArrival.Count());
-                                                }
-                                            </div>
-                                                        count = 0;
+                                                </div>
+                                                            count = 0;
+                                                        }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    <div class="row">
+                                        <div class="category-curosel">
+                                            @{ hinh = 0;}
+                                            @for (int i = 0; i < (mostView.Count() / 3); i++)
+                                            {
+                                                <div class="col-md-6">
+                                                    @{ do
+                                                        {
+                                                            <!-- single-category-tab start -->
+                                                            <div class="single-category-tab">
+                                                                <div class="single-features">
+                                                                    <div class="product-img">
+                                                                        @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = mostView[hinh].SanPhamID, name = newArrival[hinh].SEO }, null).ToHtmlString().Replace("[replacetext]",
+"<img style=\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"first-img\"  src =\"/Photos/SP/" + mostView[hinh].SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"second-img\"  src =\"/Photos/SP/" + mostView[hinh].SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
+
+                                                                    </div>
+                                                                    <div class="product-content">
+                                                                        <div class="pro-rating">
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                                        </div>
+                                                                        <h5>@Html.ActionLink(@mostView[hinh].TenSanPham, "Index", "Category", new { id = @mostView[hinh].SanPhamID, name = @mostView[hinh].SEO }, null)</h5>
+                                                                        <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan)</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- single-category-tab end -->
+                                                            count++;
+                                                            hinh++;
+                                                        }
+                                                        while (count < 3 && hinh < newArrival.Count());
                                                     }
+                                                </div>
+                                                            count = 0;
+                                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -208,5 +210,5 @@
             </div>
         </div>
     </div>
+    <!-- category-area end -->
 </div>
-<!-- category-area end -->

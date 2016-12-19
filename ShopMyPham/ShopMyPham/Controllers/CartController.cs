@@ -19,7 +19,7 @@ namespace ShopMyPham.Controllers
             if (Session["user"] == null)
             {
                 return RedirectToAction("Index", "Client");
-            }           
+            }
 
             if (cart == null || cart.Items.Count == 0)
             {
@@ -61,8 +61,16 @@ namespace ShopMyPham.Controllers
         {
             var product = db.SanPhams.Include("SanPhamHinhs").SingleOrDefault(x => x.SanPhamID == id);
             var cart = GetCart();
-
-            var cartItem = new CartItem(id, product, product.SanPhamHinhs.FirstOrDefault(), quantity);
+            if (product.IDKhuyenMai == 2)
+            {
+                product.GiaBan = product.GiaBan - (product.GiaBan * Convert.ToDecimal(0.2));
+            }
+            else if (product.IDKhuyenMai == 1)
+            {
+                product.GiaBan = product.GiaBan - (product.GiaBan * Convert.ToDecimal(0.1));
+            }
+            
+                var cartItem = new CartItem(id, product, product.SanPhamHinhs.FirstOrDefault(), quantity);
             cart.Add(cartItem);
             return RedirectToAction("Index");
         }
@@ -72,7 +80,7 @@ namespace ShopMyPham.Controllers
         #region UpdateCart
 
         /// <summary>
-        ///     Add product to cart
+        ///     Update cart
         /// </summary>
         /// <param name="id">Compare product id with resource</param>
         /// <param name="quantity">Get product quantity</param>
@@ -99,7 +107,7 @@ namespace ShopMyPham.Controllers
         [Route("gio-hang/xoa-san-pham/{id}")]
         [HttpPost]
         public RedirectToRouteResult DeleteCart(int id)
-        {            
+        {
             var cart = GetCart();
             cart.Remove(id);
             return RedirectToAction("Index");
