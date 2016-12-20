@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="car-header-title">
-                        <h2>Giỏ Hàng Của Bạn</h2>
+                        <h2>Giỏ Hàng Của @user.Ten</h2>
                         <input type="hidden" id="cart-product-id" value="@cart.Items.FirstOrDefault().SanPhamID" />
                     </div>
                 </div>
@@ -46,15 +46,15 @@
                                             <td class="product-thumbnail"><a href="#"><img src="Photos/SP/@item.SanPhamHinh.TenHinh" alt="" /></a></td>
                                             <td class="product-name"><a href="#">@item.SanPham.TenSanPham</a></td>
                                             <td class="product-price"><input type="hidden" id="proID" value="@item.SanPhamID" /> @string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</td>
-                                            <td class="product-quantity"><input type="number"  class="itemQuantity" value="@item.SoLuong" /></td> 
+                                            <td class="product-quantity"><input type="number" class="itemQuantity" value="@item.SoLuong" /></td>
                                             <td class="product-subtotal totalProduct" id="changeQuantity">@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan * item.SoLuong) </td>
                                             <td class="product-remove"><a><i class="fa fa-times removeCheckout" data-item_remove="@item.SanPhamID"></i></a></td>
-                                            <td><input type="button" class="updateCart" data-item="@item.SanPhamID" value="CẬP NHẬT" /></td>
+                                            <td><input type="button" class="updateCart btn btn-default" style="width:100px" data-item="@item.SanPhamID" value="CẬP NHẬT" /></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                           
+
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-7">
@@ -72,40 +72,35 @@
                                     <h2>Tổng Cộng</h2>
                                     <table>
                                         <tbody>
-                                            <tr class="cart-subtotal">
-                                                <th>Subtotal</th>
-                                                <td><span class="amount">@cart.Total().ToString("#,##0VND")</span></td>
-                                            </tr>
                                             <tr class="shipping">
-                                                <th>Shipping</th>
                                                 <td>
                                                     <ul id="shipping_method">
-                                                        <li>
-                                                            <label>
-                                                                Flat Rate: <span class="amount">£7.00</span>
-                                                            </label>
-                                                        </li>
                                                         <li>
                                                             <label>
                                                                 Free Shipping
                                                             </label>
                                                         </li>
-                                                        <li></li>
                                                     </ul>
-                                                    <p><a class="shipping-calculator-button" href="#">Calculate Shipping</a></p>
                                                 </td>
                                             </tr>
                                             <tr class="order-total">
-                                                <th>Total</th>
+                                                <th>Số tiền cần trả</th>
                                                 <td>
                                                     <strong><span class="amount">@cart.Total().ToString("#,##0VND")</span></strong>
                                                 </td>
-                                            </tr>
+                                            </tr>                                                    
                                         </tbody>
-                                    </table>
-                                    <div class="wc-proceed-to-checkout">
-                                        @Html.ActionLink("Xác Nhận", "CheckOutStep1", "Cart")
+                                    </table>                                    
+                                   
+                                    <div style="padding-left:150px; text-align:left;">
+                                        <br />
+                                        <input type="radio" name="checkout" value="0" checked /> Thanh toán khi nhận hàng
+                                        <br />
+                                        <input type="radio" name="checkout" value="1" /> Thanh toán trực tuyến
                                     </div>
+                                </div>
+                                <div class="wc-proceed-to-checkout" style="padding-left:200px;">
+                                    @Html.ActionLink("Xác Nhận", "CheckOutStep1", "Cart")
                                 </div>
                             </div>
                         </div>

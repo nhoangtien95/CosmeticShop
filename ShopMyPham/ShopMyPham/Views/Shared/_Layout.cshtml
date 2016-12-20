@@ -75,11 +75,11 @@
     ============================================ -->
     @*<script src="/Content/js/vendor/modernizr-2.8.3.min.js"></script>
 
-    <link rel="stylesheet" href="~/Content/js.2/rs-plugin/css/settings.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/js.2/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/js.2/prettyphoto/css/prettyPhoto.css" type="text/css" />
-    <script src="~/Content/js.2/jquery.min.js"></script>
-    <script src="~/Content/js.2/modernizr.custom.56918.js"></script>*@
+        <link rel="stylesheet" href="~/Content/js.2/rs-plugin/css/settings.css" type="text/css" />
+        <link rel="stylesheet" href="~/Content/js.2/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+        <link rel="stylesheet" href="~/Content/js.2/prettyphoto/css/prettyPhoto.css" type="text/css" />
+        <script src="~/Content/js.2/jquery.min.js"></script>
+        <script src="~/Content/js.2/modernizr.custom.56918.js"></script>*@
 
     <script src="~/Content/js/AutoComplete/jquery.js"></script>
     <link href="~/Content/js/AutoComplete/jquery-ui.css" rel="stylesheet" />
@@ -90,31 +90,68 @@
     <link href="~/Content/js/AutoComplete/jquery-ui.theme.min.css" rel="stylesheet" />
     <script src="~/Content/js/AutoComplete/jquery-ui.js"></script>
     <script src="~/Content/js/AutoComplete/jquery-ui.min.js"></script>
-    
+
     <style>
-        .searchImg{
-            float:left;
-            max-height:120px;
-            max-width:75px;
-            height:120px;
-            width:75px;
-        }
-        .ui-menu-item {
-            overflow:hidden;
-            width:402px;
-        }
-        .searchStr{
-            position:relative;
-            float:left;
+        .searchImg {
+            float: left;
+            max-height: 120px;
+            max-width: 75px;
+            height: 120px;
+            width: 75px;
         }
 
-            .test{
-                margin-top:25px;
-                float:left;
-                position:relative;
-                color:hotpink;
-                width:300px;
-                height:100px;
+        .ui-menu-item {
+            overflow: hidden;
+            width: 402px;
+        }
+
+        .searchStr {
+            position: relative;
+            float: left;
+        }
+
+        .test {
+            margin-top: 25px;
+            float: left;
+            position: relative;
+            color: hotpink;
+            width: 300px;
+            height: 100px;
+        }
+
+        .fix-text h5 a {
+            color: #6f6f6f;
+        }
+        .fix-text h5 a:hover {
+            color: #b3d4fc;
+        }
+
+        .product-custom {
+            margin-top: 20px;
+            transition: all 0.3s ease 0s;
+            text-decoration: none;
+            background-color: transparent;
+            text-align: left;
+            height: 80px;
+            max-height: 80px;
+        }
+
+            .product-custom h5 a:hover {
+                color: #b3d4fc;
+            }
+
+            .product-custom h5 a {
+                color: #6f6f6f;
+                height: 50px;
+                max-height: 45px;
+            }
+
+            .product-custom span {
+                font-weight: 700;
+                color: #e54d26;
+                font-size: 14px;
+                font-style: normal;
+                margin-top: -20px;
             }
     </style>
 
@@ -139,7 +176,7 @@
                   .appendTo(ul);
             };
         });
-        
+
         //Giới hạn kết quả trả về là 5
         $.ui.autocomplete.prototype._renderMenu = function (ul, items) {
             var self = this;
@@ -169,13 +206,13 @@
 
         });
 
-       $(function () {
+        $(function () {
 
-           $('.removeCart').click(function () {
+            $('.removeCart').click(function () {
 
-               var id = $('#removeProduct-id').val();
+                var id = $('#removeProduct-id').val();
                 $.ajax({
-                    url: "/gio-hang/xoa-san-pham/" + id ,
+                    url: "/gio-hang/xoa-san-pham/" + id,
                     data: { 'id': id },
                     type: 'POST',
                     success: function () {
@@ -241,8 +278,8 @@
 
 
     </header>
-        @RenderBody()
-     <br /><br /><br />
+    @RenderBody()
+    <br /><br /><br />
     @*Brand area*@
 
     @Html.Action("_BrandPartial", "Home")
@@ -285,4 +322,3 @@
 </body>
 
 </html>
-

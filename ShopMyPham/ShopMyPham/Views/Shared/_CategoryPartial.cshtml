@@ -1,8 +1,12 @@
 ﻿@{
     var newArrival = ViewBag.newArrival as List<ShopMyPham.Models.SanPham>;
     var mostView = ViewBag.mostView as List<ShopMyPham.Models.SanPham>;
+    var onSale = ViewBag.countdown as List<ShopMyPham.Models.SanPham>;
+    var time = ViewBag.time;
+    int now = DateTime.Compare(time[0], DateTime.UtcNow);
     int count = 0; int hinh = 0;
 }
+<br /><hr /><br />
 <div style="padding-left:75px;">
     <!-- category-area start -->
     <div class="category-area">
@@ -14,99 +18,42 @@
                             <h3>Best selling</h3>
                         </div>
                         <div class="sale-curosel">
+                            @foreach (var item in onSale)
+                            {
                             <!-- product start -->
-                            <div class="single-features">
-                                <span class="sale-text">Sale</span>
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img class="first-img" src="/Content/img/product/3.jpg" alt="" />
-                                        <img class="second-img" src="/Content/img/product/4.jpg" alt="" />
-                                    </a>
-                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                    <div class="action-buttons">
-                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
+                                <div class="single-features">
+                                    <span class="sale-text">Sale</span>
+                                    <div class="product-img">
+                                        <a href="@Url.Action("Index", "Category", new { id = item.SanPhamID, name = item.SEO })">
+                                            @if (item.SanPhamHinhs.Count() > 1)
+                                            {
+                                                <img class="first-img" src="~/Photos/SP/@item.SanPhamHinhs.FirstOrDefault().TenHinh" alt="" />
+                                                <img class="second-img" src="~/Photos/SP/@item.SanPhamHinhs.Skip(1).FirstOrDefault().TenHinh" alt="" />
+                                            }
+                                            else
+                                            {
+                                                <img class="first-img" src="~/Photos/SP/@item.SanPhamHinhs.FirstOrDefault().TenHinh" alt="" />
+                                            }
+                                        </a>
+                                    </div>
+                                    <div class="timer">
+                                        @if (now > 0)
+                                        {
+                                            <div data-countdown="@time[0].Date"></div>
+                                        }
+                                        else
+                                        {
+                                            <div data-countdown="2014/05/01"></div>
+                                        }
+                                    </div>
+                                    <div class="product-content">
+                                        <h5><a href="@Url.Action("Index", "Category", new { id = item.SanPhamID, name = item.SEO })">@item.TenSanPham</a></h5>
+                                        <span class="old-price">@string.Format("{0:#,##0 VND}", item.GiaBan)</span>
+                                        <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.2)))</span>
                                     </div>
                                 </div>
-                                <div class="timer">
-                                    <div data-countdown="2016/05/01"></div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="pro-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <h5><a href="#">Etiam molestie</a></h5>
-                                    <span class="old-price">£230.00</span>
-                                    <span class="pro-price">£220.00</span>
-                                </div>
-                            </div>
                             <!-- product end -->
-                            <!-- product start -->
-                            <div class="single-features">
-                                <span class="sale-text">Sale</span>
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img class="first-img" src="/Content/img/product/5.jpg" alt="" />
-                                        <img class="second-img" src="/Content/img/product/6.jpg" alt="" />
-                                    </a>
-                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                    <div class="action-buttons">
-                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
-                                    </div>
-                                </div>
-                                <div class="timer">
-                                    <div data-countdown="2016/04/01"></div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="pro-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <h5><a href="#">Aenean eu tristique</a></h5>
-                                    <span class="old-price">£80.00</span>
-                                    <span class="pro-price">£70.00</span>
-                                </div>
-                            </div>
-                            <!-- product end -->
-                            <!-- product start -->
-                            <div class="single-features">
-                                <span class="sale-text">Sale</span>
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img class="first-img" src="/Content/img/product/10.jpg" alt="" />
-                                        <img class="second-img" src="/Content/img/product/11.jpg" alt="" />
-                                    </a>
-                                    <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Quick View</a>
-                                    <div class="action-buttons">
-                                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i> <span>Add to cart</span></a>
-                                        <a class="favourite" href="#"><i class="fa fa-heart-o"></i></a>
-                                        <a class="compare" href="#"><i class="fa fa-toggle-off"></i></a>
-                                    </div>
-                                </div>
-                                <div class="timer">
-                                    <div data-countdown="2016/03/01"></div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="pro-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <h5><a href="#">Phasellus vel hendrerit</a></h5>
-                                    <span class="old-price">£100.00</span>
-                                    <span class="pro-price">£80.00</span>
-                                </div>
-                            </div>
-                            <!-- product end -->
+                            }
                         </div>
                     </div>
                 </div>
@@ -138,15 +85,20 @@
                                                                         @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = newArrival[hinh].SanPhamID, name = newArrival[hinh].SEO }, null).ToHtmlString().Replace("[replacetext]",
 "<img style=\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"first-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 166px; max - height: 166px; width: 166px; height: 166px;\" class=\"second-img\"  src =\"/Photos/SP/" + newArrival[hinh].SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
                                                                     </div>
-                                                                    <div class="product-content">
-                                                                        <div class="pro-rating">
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                        </div>
-                                                                        <h5>@Html.ActionLink(@newArrival[hinh].TenSanPham, "Index", "Category", new { id = @newArrival[hinh].SanPhamID, name = @newArrival[hinh].SEO }, null)</h5>
-                                                                        <span class="pro-price">@string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan)</span>
+                                                                    <div class="product-custom">
+                                                                        <h5><a href="@Url.Action("Index", "Category", new { id = @newArrival[hinh].SanPhamID, name = @newArrival[hinh].SEO })">@newArrival[hinh].TenSanPham</a></h5>
+                                                                        @if (newArrival[hinh].IDKhuyenMai == 2)
+                                                                        {
+                                                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan - (newArrival[hinh].GiaBan * Convert.ToDecimal(0.2)))</span>
+                                                                        }
+                                                                        else if (newArrival[hinh].IDKhuyenMai == 3)
+                                                                        {
+                                                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan - (newArrival[hinh].GiaBan * Convert.ToDecimal(0.1)))</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", @newArrival[hinh].GiaBan)</span>
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -180,14 +132,19 @@
 
                                                                     </div>
                                                                     <div class="product-content">
-                                                                        <div class="pro-rating">
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                        </div>
                                                                         <h5>@Html.ActionLink(@mostView[hinh].TenSanPham, "Index", "Category", new { id = @mostView[hinh].SanPhamID, name = @mostView[hinh].SEO }, null)</h5>
-                                                                        <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan)</span>
+                                                                        @if (mostView[hinh].IDKhuyenMai == 2)
+                                                                        {
+                                                                            <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan - (mostView[hinh].GiaBan * Convert.ToDecimal(0.2)))</span>
+                                                                        }
+                                                                        else if (mostView[hinh].IDKhuyenMai == 3)
+                                                                        {
+                                                                            <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan - (mostView[hinh].GiaBan * Convert.ToDecimal(0.1)))</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="pro-price">@string.Format("{0:#,##0 VND}", @mostView[hinh].GiaBan)</span>
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>

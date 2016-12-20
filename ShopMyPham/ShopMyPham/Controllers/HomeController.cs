@@ -149,6 +149,10 @@ namespace ShopMyPham.Controllers
             //Most View Products
             ViewBag.mostView = db.SanPhams.Include("SanPhamHinhs").Where(x => x.NgayThem >= currenteDate && x.TrangThai == 1).OrderBy(x => x.SoLanXem).Take(12).ToList();
 
+            //Sale countdown
+            ViewBag.countdown = db.SanPhams.Include("SanPhamHinhs").Where(x => x.IDKhuyenMai == 2).Take(4).ToList();
+            ViewBag.time = db.KhuyenMais.Where(x => x.KhuyenMaiID == 2).Select(x => x.NgayKetThuc).ToList();
+
             return PartialView();
         }
         #endregion

@@ -19,18 +19,12 @@
             </div>
             <!-- header-social-icon end -->
             <!-- header-top-menu start -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="header-top-menu">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                <div class="header-top-menu" style="margin-right: -130px;">
                     @if (user == null)
                     {
                         <ul>
                             <li><a href="#">@Html.ActionLink("Tài khoản", "Index", "Client")</a></li>
-                            <li>
-                                <a href="#">English <i class="fa fa-caret-down"></i></a>
-                                <ul>
-                                    <li><a href="#">Việt Nam</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     }
                     else

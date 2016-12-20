@@ -65,7 +65,7 @@ namespace ShopMyPham.Controllers
             {
                 product.GiaBan = product.GiaBan - (product.GiaBan * Convert.ToDecimal(0.2));
             }
-            else if (product.IDKhuyenMai == 1)
+            else if (product.IDKhuyenMai == 3)
             {
                 product.GiaBan = product.GiaBan - (product.GiaBan * Convert.ToDecimal(0.1));
             }

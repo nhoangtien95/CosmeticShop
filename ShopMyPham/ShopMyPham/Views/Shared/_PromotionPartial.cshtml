@@ -57,15 +57,20 @@
 
                                         @Html.ActionLink("Xem Ngay", "Index", "Category", new { id = @item.SanPhamID, name = @item.SEO }, new { @class = "modal-view" })
                                     </div>
-                                    <div class="product-content">
-                                        <div class="pro-rating">
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                        </div>
-                                        <h5><a href="#">@item.TenSanPham</a></h5>
-                                        <span class="pro-price">@item.GiaBan</span>
+                                    <div class="product-content" >
+                                        <h5><a href="@Url.Action("Index", "Category", new { id = @item.SanPhamID, name = @item.SEO })" style="height:60px; max-height:60px">@item.TenSanPham</a></h5>
+                                        @if (item.IDKhuyenMai == 2)
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.2)))</span>
+                                        }
+                                        else if (item.IDKhuyenMai == 3)
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.1)))</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan)</span>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -81,15 +86,19 @@
                                         @Html.ActionLink("Xem Ngay", "Index", "Category", new { id = @item.SanPhamID, name = @item.SEO }, new { @class = "modal-view" })
                                     </div>
                                     <div class="product-content">
-                                        <div class="pro-rating">
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star-o"></i></a>
-                                        </div>
-                                        <h5><a href="#">@item.TenSanPham</a></h5>
-                                        <span class="old-price">@item.GiaBan</span>
-                                        <span class="pro-price">£70.00</span>
+                                        <h5><a href="@Url.Action("Index", "Category", new { id = @item.SanPhamID, name = @item.SEO })" style="height:60px; max-height:60px">@item.TenSanPham</a></h5>
+                                        @if (item.IDKhuyenMai == 2)
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.2)))</span>
+                                        }
+                                        else if (item.IDKhuyenMai == 3)
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.1)))</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan)</span>
+                                        }
                                     </div>
                                 </div>
                             </div>
