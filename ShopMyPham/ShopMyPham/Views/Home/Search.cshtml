@@ -26,14 +26,24 @@
                                 <div class="product-img">
                                     @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Category", new { id = @item.SanPhamID, name = @item.SEO }, null).ToHtmlString().Replace("[replacetext]",
                                        "<img style=\"display: block; max - width: 300px; max - height: 300px; width: 300px; height: 300px;\" class=\"first-img\"  src =\"/Photos/SP/" + @item.SanPhamHinhs.First().TenHinh + "\" />  <img style =\"display: block; max - width: 300px; max - height: 300px; width: 300px; height: 300px;\" class=\"second-img\"  src =\"/Photos/SP/" + @item.SanPhamHinhs.Skip(1).First().TenHinh + "\" />"))
-                                    @*<img style="display: block; max - width: 300px; max - height: 300px; width: 300px; height: 300px;" class="first-img" src="~/Photos/SP/@item.SanPhamHinhs.First().TenHinh" alt="" />
-                                        <img style="display: block; max - width: 300px; max - height: 300px; width: 300px; height: 300px;" class="second-img" src="~/Photos/SP/@item.SanPhamHinhs.Skip(1).First().TenHinh" alt="" />*@
+                                   
 
                                     <a class="modal-view" href="#" data-toggle="modal" data-target="#productModal">Xem Ngay</a>
                                 </div>
                                 <div class="product-content">
                                     <h5><a href="#">@item.TenSanPham</a></h5>
-                                    <span class="pro-price">@item.GiaBan</span>
+                                    @if (item.IDKhuyenMai == 2)
+                                    {
+                                        <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.2)))</span>
+                                    }
+                                    else if (item.IDKhuyenMai == 3)
+                                    {
+                                        <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan - (item.GiaBan * Convert.ToDecimal(0.1)))</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="pro-price">Giá: @string.Format("{0:#,##0 VND}", item.GiaBan)</span>
+                                    }
                                 </div>
                             </div>
                         </div>
